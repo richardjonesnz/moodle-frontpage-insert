@@ -6,6 +6,8 @@
 <div class="jumbotron text-center">
   <h1>Welcome to my Moodle</h1>
   <p>A responsive Moodle front page insert</p> 
+   <br /><a href="#" data-toggle="popover" title="Contact" 
+      data-content="email: us@muddle.com">Contact us</a>
 </div>
 
 <div class="container">
@@ -39,3 +41,9 @@
   <p>Attribution for the images:</p>
   <img class = "img-fluid" src="frontpageinsert/license.jpg" alt="Attribution">  
 </div>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>

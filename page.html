@@ -22,3 +22,33 @@
       <a href="http://192.168.1.100/moodle/course/view.php?id=4"><img class="img-fluid" src="frontpage/notice-board.png" alt="Notices"></a>
     </div>
 </div>
+
+<?php
+    include 'debugging.php';
+    global $PAGE, $DB;
+    $courses = $DB->get_records('course', null, '',
+           'fullname, shortname, summary, format,
+            startdate, enddate, visible');
+?>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Short name</th>
+    </thead>
+    <tbody>
+    <?php
+    foreach ($courses as $course) {
+        if ( ($course->visible)  && ($course->enddate >= time()) ) {
+        ?>
+          <tr>
+            <td><?php echo $course->fullname; ?></td>
+            <td><?php echo $course->shortname; ?></td>
+          </tr>
+        <?php
+        }
+    }
+    ?>
+  </tbody>
+</table>
+</div>
